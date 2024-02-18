@@ -4,10 +4,96 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        //testBubbleSortSmallData();
+        // testBubbleSortSmallData();
 
-        testBubbleSortLargeData();
+        // testBubbleSortLargeData();
+        testMergeSortedArray();
     }
+
+    public static void testMergeSortedArray() {
+        int[] array = {30, 15, 4, 9, 6, 10, 8};
+        // test from group size = 1
+        mergeSortedArray(array, 0, 0, 1, 1);     // merge (30)  and (15)
+        System.out.print("1: Partially sorted array ");    // make sure only 30, 15 are sorted
+        printArray(array);
+  
+        mergeSortedArray(array, 2, 2, 3, 3) ;    // merge (4)  and (9)
+        System.out.print("2: Partially sorted array ");    // make sure only 4, 9 are sorted
+        printArray(array);
+  
+        mergeSortedArray(array, 4, 4, 5, 5);     // merge (6)  and (10)
+        System.out.print("3: Partially sorted array " );    // make sure only 4, 9 are sorted
+        printArray(array);
+  
+        // Now we test group size = 2
+        mergeSortedArray(array, 0, 1, 2, 3);     // merge (15, 30)  and (4, 9)
+        System.out.print("4: Partially sorted array ");   // ensure only30, 15, 4, 9 are sorted
+        printArray(array);
+  
+        mergeSortedArray(array, 4, 5, 6, 6);     // merge (6, 10)  and (8)
+        System.out.print("5: Partially sorted array ");  // ensure only 6, 10, 8 are sorted
+        printArray(array);
+  
+        mergeSortedArray(array, 0, 3, 4, 6); 
+        System.out.print("6: sorted array ");
+        printArray(array);
+        // Now we test group size = 4
+        // Can you write this one? After this step, is the array sorted?
+  
+        // Do we need to test group size = 8? no
+  }
+  
+  
+  // mergeSortedArray merges and sorts two groups
+    public static void mergeSortedArray (int[] array, int leftStart, int leftEnd, int rightStart, int rightEnd) {
+  
+        // Make copies of left and right array
+        int[] leftArray = new int[leftEnd - leftStart + 1];
+        int[] rightArray = new int[rightEnd - rightStart + 1];
+
+        // copy integers to leftArray
+        int j = 0;
+        for (int i = leftStart; i <= leftEnd; i++ ){
+            leftArray[j] = array[i];
+            j++;
+        }
+
+        // copy integers to rightArray
+        j = 0;
+        for (int i = rightStart; i <= rightEnd; i++ ){
+            rightArray[j] = array[i];
+            j++;
+        }
+
+        // assigns the smaller integer to the original array
+        // from left copy and right copy
+        int k = leftStart;     
+        int i = 0; 
+        j = 0; 
+        for (;i < leftArray.length && j < rightArray.length;) {
+            if (leftArray[i] < rightArray[j]){
+                array[k] = leftArray[i];
+                i++;
+            } else {
+                array[k] = rightArray[j];
+                j++;
+            }
+            k++;
+        }
+
+        // assigns remaining values from left array
+        for (;i < leftArray.length; i++){
+            array[k] = leftArray[i];
+            k++;
+        }
+
+          // assigns remaining values from right array
+          for (;j < rightArray.length; j++){
+            array[k] = rightArray[j];
+            k++;
+        }
+  }
+  
 
     // bubblesort sorts the int array using bubblesort.
     public static void bubbleSort(int [] array) {
