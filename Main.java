@@ -7,8 +7,83 @@ public class Main {
         // testBubbleSortSmallData();
 
         // testBubbleSortLargeData();
-        testMergeSortedArray();
+
+        // testMergeSortedArray();
+
+        testMergeSortSmallData();
     }
+
+    // public static boolean isArraySorted(int[] array) {
+    //     // Can you implement a function to test if an array is sorted?
+    
+    //     // Can your implementation handle single or zero element arrays like {5} or {}?
+    // }
+    
+    public static void testMergeSortSmallData() {
+        int[] arrayTest = {30, 15, 4, 9, 6, 10, 8};
+        //System.out.Println(“Array is sorted? ” + isArraySorted(arrayTest))
+        mergeSort(arrayTest);
+        System.out.println("After merge sort:");
+        printArray(arrayTest);
+        //System.out.Println("After merge sort, array is sorted?  + isArraySorted(arrayTest))
+    
+        // copy more test cases from testBubbleSortSmallData
+        // make sure the results look good
+
+        int[] array0 = {};
+        mergeSort(array0);
+        printArray(array0);
+    
+        int[] array1 = {2};
+        mergeSort(array1);
+        printArray(array1);
+    
+        int[] array2 = {2, 2, 2, 6, 6, 6, 1};
+        mergeSort(array2);
+        printArray(array2);
+    }
+    
+    public static void mergeSort(int[] array) {
+        // implement mergeSort
+        int groupSize = 1;
+        double numberOfGroups;
+        int numberOfPairs;
+        int leftStart;
+        int rightStart;
+        int rightEnd; 
+        int leftEnd;
+        for (; groupSize < array.length; groupSize = groupSize * 2){
+            numberOfGroups = Math.ceil(array.length/groupSize);
+            numberOfPairs = (int) Math.ceil(numberOfGroups/2);
+
+            //System.out.println("groupsize: " + groupSize + " number of groups: " + numberOfGroups + " number of pair: " + numberOfPairs);
+            // this for-loop divides the array into pairs—leftarray rightarray
+            // and merges the left array with the right array. 
+            for (int pairIndx = 0; pairIndx < numberOfPairs; pairIndx++) {
+                leftStart = pairIndx * groupSize * 2; 
+                leftEnd = leftStart + groupSize - 1; 
+                rightStart = leftStart + groupSize; 
+                rightEnd = leftStart + 2 * groupSize - 1; 
+
+                // if the right array has one element, 
+                // we are reaching the end of the 
+                // array, so break the inner for-loop. 
+                if (rightStart >= array.length){
+                    break; 
+                }
+
+                // if the right array is less than 
+                // the groupSize, set the rightEnd
+                // to the last element of the array. 
+                if (rightEnd >= array.length){
+                    rightEnd = array.length - 1; 
+                }
+
+                mergeSortedArray(array, leftStart, leftEnd, rightStart, rightEnd);
+            }
+        }
+    }
+    
 
     public static void testMergeSortedArray() {
         int[] array = {30, 15, 4, 9, 6, 10, 8};
