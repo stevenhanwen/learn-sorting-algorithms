@@ -6,18 +6,59 @@ public class Main {
     public static void main(String[] args) throws Exception {
         // testBubbleSortSmallData();
 
-        // testBubbleSortLargeData();
+        //testBubbleSortLargeData();
 
         // testMergeSortedArray();
 
-        testMergeSortSmallData();
+        // testMergeSortSmallData();
+
+        //testMergeSortLargeData();
+
+        testIsArraySortedSmallData();
     }
 
-    // public static boolean isArraySorted(int[] array) {
-    //     // Can you implement a function to test if an array is sorted?
+    public static void testIsArraySortedSmallData() {
+        int[] array1 = {};
+        System.out.println("the array with no values is sorted: " + isArraySorted(array1));
+
+        int[] array2 = {5};
+        System.out.println("the array with one value is sorted: " + isArraySorted(array2));
+    }
+
+    // isArraySorted returns if an array is sorted
+    public static boolean isArraySorted(int[] array) {
+        for (int i = 0; i < array.length - 1; i++){
+            if (array[i] > array[i+1]){
+                return false;
+            }
+        }
+        return true; 
+    }
     
-    //     // Can your implementation handle single or zero element arrays like {5} or {}?
-    // }
+        // testBubbleSortLargeData sorts the large data using bubblesort.
+        public static void testMergeSortLargeData() {
+            int[] array1k = getIntegerArrayFromFile("/Users/stevenkang/Documents/code/learn-sorting-algorithms/testdata/1k.dat");
+            long start = System.nanoTime();
+            mergeSort(array1k);
+            long finish = System.nanoTime();
+            long timeElapsed = finish - start;
+            System.out.println("Merge sorting 1k data strand runtime: " + timeElapsed/1000 + " microseconds");
+            System.out.println("the array is sorted: " + isArraySorted(array1k));
+            
+            //System.out.println("sorted");
+            //printArray(array1k);
+    
+            int[] array5k = getIntegerArrayFromFile("/Users/stevenkang/Documents/code/learn-sorting-algorithms/testdata/5k.dat");
+            start = System.nanoTime();
+            mergeSort(array5k);
+            finish = System.nanoTime();
+            timeElapsed = finish - start;
+            System.out.println("Merge sorting 5k data strand runtime: " + timeElapsed/1000 + " microseconds");
+            System.out.println("the array is sorted: " + isArraySorted(array5k));
+    
+            //System.out.println("sorted");
+            //printArray(array5k);
+        }
     
     public static void testMergeSortSmallData() {
         int[] arrayTest = {30, 15, 4, 9, 6, 10, 8};
@@ -196,7 +237,7 @@ public class Main {
         bubbleSort (array1k);
         long finish = System.nanoTime();
         long timeElapsed = finish - start;
-        System.out.println("Sorting 1k data strand runtime: " + timeElapsed/1000000 + " milliseconds");
+        System.out.println("Bubble sorting 1k data strand runtime: " + timeElapsed/1000 + " microseconds");
         
         //System.out.println("sorted");
         //printArray(array1k);
@@ -206,7 +247,7 @@ public class Main {
         bubbleSort (array5k);
         finish = System.nanoTime();
         timeElapsed = finish - start;
-        System.out.println("Sorting 5k data strand runtime: " + timeElapsed/1000000 + " milliseconds");
+        System.out.println("Bubble sorting 5k data strand runtime: " + timeElapsed/1000 + " microseconds");
 
         //System.out.println("sorted");
         //printArray(array5k);
