@@ -12,9 +12,9 @@ public class Main {
 
         // testMergeSortSmallData();
 
-        //testMergeSortLargeData();
+        testSortLargeData();
 
-        testIsArraySortedSmallData();
+        // testIsArraySortedSmallData();
     }
 
     public static void testIsArraySortedSmallData() {
@@ -36,25 +36,43 @@ public class Main {
     }
     
         // testBubbleSortLargeData sorts the large data using bubblesort.
-        public static void testMergeSortLargeData() {
-            int[] array1k = getIntegerArrayFromFile("/Users/stevenkang/Documents/code/learn-sorting-algorithms/testdata/1k.dat");
-            long start = System.nanoTime();
-            mergeSort(array1k);
-            long finish = System.nanoTime();
-            long timeElapsed = finish - start;
-            System.out.println("Merge sorting 1k data strand runtime: " + timeElapsed/1000 + " microseconds");
-            System.out.println("the array is sorted: " + isArraySorted(array1k));
+        public static void testSortLargeData() {
+
+            String prefix = "/Users/stevenkang/Documents/code/learn-sorting-algorithms/testdata/";
+	        String[] filenames = {prefix+"2k.dat", prefix+"4k.dat", prefix+"6k.dat", prefix+"8k.dat", prefix+"10k.dat"};
+            int j = 2;
+	        for (int i=0; i < filenames.length; i++) {
+                String filename = filenames[i];
+                int[] array = getIntegerArrayFromFile(filename);
+                long start = System.nanoTime();
+                mergeSort(array);
+                //bubbleSort(array);
+                long finish = System.nanoTime();
+                long timeElapsed = finish - start;
+                System.out.println("Merge sorting " + j + "k data strand runtime: " + timeElapsed/1000 + " microseconds");
+                System.out.println("the array is sorted: " + isArraySorted(array));
+                j = j + 2;
+            }
             
-            //System.out.println("sorted");
-            //printArray(array1k);
+
+            // int[] array1k = getIntegerArrayFromFile("/Users/stevenkang/Documents/code/learn-sorting-algorithms/testdata/1k.dat");
+            // long start = System.nanoTime();
+            // mergeSort(array1k);
+            // long finish = System.nanoTime();
+            // long timeElapsed = finish - start;
+            // System.out.println("Merge sorting 1k data strand runtime: " + timeElapsed/1000 + " microseconds");
+            // System.out.println("the array is sorted: " + isArraySorted(array1k));
+            
+            // //System.out.println("sorted");
+            // //printArray(array1k);
     
-            int[] array5k = getIntegerArrayFromFile("/Users/stevenkang/Documents/code/learn-sorting-algorithms/testdata/5k.dat");
-            start = System.nanoTime();
-            mergeSort(array5k);
-            finish = System.nanoTime();
-            timeElapsed = finish - start;
-            System.out.println("Merge sorting 5k data strand runtime: " + timeElapsed/1000 + " microseconds");
-            System.out.println("the array is sorted: " + isArraySorted(array5k));
+            // int[] array5k = getIntegerArrayFromFile("/Users/stevenkang/Documents/code/learn-sorting-algorithms/testdata/5k.dat");
+            // start = System.nanoTime();
+            // mergeSort(array5k);
+            // finish = System.nanoTime();
+            // timeElapsed = finish - start;
+            // System.out.println("Merge sorting 5k data strand runtime: " + timeElapsed/1000 + " microseconds");
+            // System.out.println("the array is sorted: " + isArraySorted(array5k));
     
             //System.out.println("sorted");
             //printArray(array5k);
