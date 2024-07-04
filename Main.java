@@ -12,9 +12,55 @@ public class Main {
 
         // testMergeSortSmallData();
 
-        testSortLargeData();
+        // testSortLargeData();
 
         // testIsArraySortedSmallData();
+
+        testSelectionSortSmallData(); 
+    }
+
+    public static void testSelectionSortSmallData(){
+
+        int[] arrayTest = {30, 15, 4, 9, 6, 10, 8};
+        //System.out.Println(“Array is sorted? ” + isArraySorted(arrayTest))
+        Sorting.selectionSort(arrayTest);
+        System.out.println("After selection sort:");
+        printArray(arrayTest);
+
+        if (isArraySorted(arrayTest)){
+            System.out.println("array is sorted");
+        }  else {
+            System.out.println("error, not sorted");
+        }
+
+        int[] array0 = {};
+        Sorting.selectionSort(array0);
+
+        if (isArraySorted(array0)){
+            System.out.println("array is sorted");
+        }  else {
+            System.out.println("error, not sorted");
+        }
+    
+        int[] array1 = {2};
+        Sorting.selectionSort(array1);
+
+        if (isArraySorted(array1)){
+            System.out.println("array is sorted");
+        }  else {
+            System.out.println("error, not sorted");
+        }
+    
+        int[] array2 = {2, 2, 2, 6, 6, 6, 1};
+        Sorting.selectionSort(array2);
+
+        if (isArraySorted(array2)){
+            System.out.println("array is sorted");
+        }  else {
+            System.out.println("error, not sorted");
+        }
+        
+
     }
 
     public static void testIsArraySortedSmallData() {
