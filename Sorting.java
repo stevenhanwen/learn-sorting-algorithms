@@ -18,4 +18,17 @@ public class Sorting {
         }
     }
 
+    public static void insertionSort(int[] input){
+        int insert; //temp variable
+        for (int i = 1; i < input.length; i++){
+            insert = input[i]; 
+            int movePlace = i; 
+            while (movePlace > 0 && input[movePlace - 1] > insert){
+                input[movePlace] = input[movePlace - 1]; 
+                movePlace--; 
+            }
+            input[movePlace] = insert; 
+        }
+    }
+
 }
