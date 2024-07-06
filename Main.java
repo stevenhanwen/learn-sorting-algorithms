@@ -12,13 +12,13 @@ public class Main {
 
         // testMergeSortSmallData();
 
-        // testSortLargeData();
+        testSortLargeData();
 
         // testIsArraySortedSmallData();
 
         // testSelectionSortSmallData(); 
 
-        testInsertionSortSmallData(); 
+        // testInsertionSortSmallData(); 
     }
 
     public static void testInsertionSortSmallData(){
@@ -137,8 +137,10 @@ public class Main {
                 String filename = filenames[i];
                 int[] array = getIntegerArrayFromFile(filename);
                 long start = System.nanoTime();
-                mergeSort(array);
-                //bubbleSort(array);
+                // mergeSort(array);
+                // bubbleSort(array);
+                // Sorting.selectionSort(array);
+                Sorting.insertionSort(array);
                 long finish = System.nanoTime();
                 long timeElapsed = finish - start;
                 System.out.println("Merge sorting " + j + "k data strand runtime: " + timeElapsed/1000 + " microseconds");
