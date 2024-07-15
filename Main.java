@@ -19,7 +19,9 @@ public class Main {
         // testSelectionSortSmallData(); 
 
         // testInsertionSortSmallData(); 
+
     }
+
 
     public static void testInsertionSortSmallData(){
 
@@ -137,10 +139,11 @@ public class Main {
                 String filename = filenames[i];
                 int[] array = getIntegerArrayFromFile(filename);
                 long start = System.nanoTime();
-                // mergeSort(array);
+                //mergeSort(array);
                 // bubbleSort(array);
                 // Sorting.selectionSort(array);
-                Sorting.insertionSort(array);
+                mergeSortRecursive(array);
+                //Sorting.insertionSort(array);
                 long finish = System.nanoTime();
                 long timeElapsed = finish - start;
                 System.out.println("Merge sorting " + j + "k data strand runtime: " + timeElapsed/1000 + " microseconds");
@@ -195,7 +198,25 @@ public class Main {
         mergeSort(array2);
         printArray(array2);
     }
+
+
+    public static void mergeSortRecursive(int[] array){
+        sortArray(0, array.length - 1, array);
+    }
+
+    private static void sortArray(int low, int high, int[] array){
+        if (high - low >= 1){
+            int leftEnd = (low + high) / 2;
+            int rightStart = leftEnd + 1; 
+
+            sortArray(low, leftEnd, array);
+            sortArray(rightStart, high, array);
+
+            mergeSortedArray (array, low, leftEnd, rightStart, high);
+        }
+    }
     
+    // Iteration approach
     public static void mergeSort(int[] array) {
         // implement mergeSort
         int groupSize = 1;
