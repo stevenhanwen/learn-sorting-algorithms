@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays; 
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -139,11 +140,12 @@ public class Main {
                 String filename = filenames[i];
                 int[] array = getIntegerArrayFromFile(filename);
                 long start = System.nanoTime();
-                //mergeSort(array);
+                // mergeSort(array);
                 // bubbleSort(array);
                 // Sorting.selectionSort(array);
                 mergeSortRecursive(array);
-                //Sorting.insertionSort(array);
+                // Sorting.insertionSort(array);
+                // Arrays.sort(array); 
                 long finish = System.nanoTime();
                 long timeElapsed = finish - start;
                 System.out.println("Merge sorting " + j + "k data strand runtime: " + timeElapsed/1000 + " microseconds");
