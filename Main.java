@@ -23,6 +23,51 @@ public class Main {
 
     }
 
+    public static void quickSort(int[] arr, int low, int high)
+    {
+        if (low < high) {
+
+            // pi is partitioning index, arr[p]
+            // is now at right place
+            int pi = partition(arr, low, high);
+
+            // Separately sort elements before
+            // partition and after partition
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+
+    public static int partition(int[] arr, int low, int high)
+    {
+        // Choosing the pivot
+        int pivot = arr[high];
+
+        // Index of smaller element and indicates
+        // the right position of pivot found so far
+        int i = (low - 1);
+
+        for (int j = low; j <= high - 1; j++) {
+
+            // If current element is smaller than the pivot
+            if (arr[j] < pivot) {
+
+                // Increment index of smaller element
+                i++;
+                swap(arr, i, j);
+            }
+        }
+        swap(arr, i + 1, high);
+        return (i + 1);
+    }
+
+    public static void swap(int[] arr, int i, int j)
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
 
     public static void testInsertionSortSmallData(){
 
@@ -143,12 +188,13 @@ public class Main {
                 // mergeSort(array);
                 // bubbleSort(array);
                 // Sorting.selectionSort(array);
-                mergeSortRecursive(array);
+                // mergeSortRecursive(array);
                 // Sorting.insertionSort(array);
-                // Arrays.sort(array); 
+                // javaArraySort(array);
+                quickSort(array, 0, array.length-1);
                 long finish = System.nanoTime();
                 long timeElapsed = finish - start;
-                System.out.println("Merge sorting " + j + "k data strand runtime: " + timeElapsed/1000 + " microseconds");
+                System.out.println("Sorting " + j + "k data strand runtime: " + timeElapsed/1000 + " microseconds");
                 System.out.println("the array is sorted: " + isArraySorted(array));
                 j = j + 2;
             }
@@ -201,8 +247,13 @@ public class Main {
         printArray(array2);
     }
 
+    public static void javaArraySort(int[] array){
+        System.out.println("Java Array Sort");
+        Arrays.sort(array);
+    }
 
     public static void mergeSortRecursive(int[] array){
+        System.out.println("Merge Sort");
         sortArray(0, array.length - 1, array);
     }
 
