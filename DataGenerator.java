@@ -5,12 +5,25 @@ import java.io.IOException;
 public class DataGenerator {
     
     public static void main(String[] args) throws Exception {
-        int[] array = getPartiallySortedArrayByThousand(25);
-        //Main.printArray(array5k);
+        int[] array = getRandomArrayByThousands(25);
+        //Main.printArray(array);
 
         String filePrefix = "/Users/stevenkang/Documents/code/learn-sorting-algorithms/testdata/07_2024_data/";
-        String filename = filePrefix + "25k-partially-sorted.dat";
+        String filename = filePrefix + "25k-random.dat";
         writeArrayToFile(filename, array);
+    }
+
+    public static int[] getRandomArrayByThousands(int numk){
+        int[] array = new int[numk * 1000]; 
+        addRandomNumbers(array, 0, array.length - 1);
+        return array;
+    }
+
+    public static int[] getSortedArrayByThousands(int numk, int increment){
+        int[] array = new int[numk * 1000];
+        int end = numk * 1000 - 1;  
+        addSortedNumbers(array, 0, end, increment);
+        return array; 
     }
 
     public static void writeArrayToFile (String filename, int[]x) throws IOException{
@@ -48,6 +61,9 @@ public class DataGenerator {
         return array; 
     }
 
+    // addSortedNumbers can generate sorted array increasing or decreasing controlled by increment
+    // start: first element of array
+    // end: last element of array, not the length
     public static void addSortedNumbers(int[] array, int start, int end, int increment){
         int randomStart = 0 + (int)(Math.random() * ((100000 - 0) + 1));
         for (int i = start; i <= end; i++){
