@@ -503,7 +503,7 @@ public class Main {
     }
 
     // printArray prints the int array. 
-    private static void printArray(int[] array) {
+    public static void printArray(int[] array) {
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " ");
         }
