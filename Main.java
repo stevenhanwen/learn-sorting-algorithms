@@ -179,7 +179,7 @@ public class Main {
         // testBubbleSortLargeData sorts the large data using bubblesort.
         public static void testSortLargeData() {
 
-            String prefix = "/Users/stevenkang/Documents/code/learn-sorting-algorithms/testdata/03_2024_data/";
+            String prefix = "./testdata/03_2024_data/";
 	        String[] filenames = {prefix+"2k.dat", prefix+"4k.dat", prefix+"6k.dat", prefix+"8k.dat", prefix+"10k.dat"};
             int j = 2;
 	        for (int i=0; i < filenames.length; i++) {
