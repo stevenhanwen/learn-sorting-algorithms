@@ -1,7 +1,7 @@
 # learn-sorting-algorithms
 Study different sorting algorithms. 
 
-### Performance comparison between bubble sort and merge sort.
-<img src="./report/performance-comparison.png" alt="drawing" width="700"/>
+### Performance comparison between sorting algorithms for partially sorted integers.
+<img src="./document/partially-sorted-ss.png" alt="drawing" width="700"/>
 
-### The full report can be found [here](./report/Steven-Kang-merge-sort-2024.pdf) 
+### The full report is work in progress.
