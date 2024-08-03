@@ -8,7 +8,7 @@ public class DataGenerator {
         int[] array = getRandomArrayByThousands(25);
         //Main.printArray(array);
 
-        String filePrefix = "/Users/stevenkang/Documents/code/learn-sorting-algorithms/testdata/07_2024_data/";
+        String filePrefix = "./testdata/07_2024_data/";
         String filename = filePrefix + "25k-random.dat";
         writeArrayToFile(filename, array);
     }

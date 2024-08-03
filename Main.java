@@ -179,9 +179,10 @@ public class Main {
         // testBubbleSortLargeData sorts the large data using bubblesort.
         public static void testSortLargeData() {
 
-            String prefix = "./testdata/03_2024_data/";
-	        String[] filenames = {prefix+"2k.dat", prefix+"4k.dat", prefix+"6k.dat", prefix+"8k.dat", prefix+"10k.dat"};
-            int j = 2;
+            String prefix = "./testdata/07_2024_data/";
+	        String[] filenames = {prefix+"5k-partially-sorted.dat", prefix+"10k-partially-sorted.dat", 
+                prefix+"15k-partially-sorted.dat", prefix+"20k-partially-sorted.dat", prefix+"25k-partially-sorted.dat"};
+            int j = 5;
 	        for (int i=0; i < filenames.length; i++) {
                 String filename = filenames[i];
                 int[] array = getIntegerArrayFromFile(filename);
@@ -191,13 +192,13 @@ public class Main {
                 // Sorting.selectionSort(array);
                 // mergeSortRecursive(array);
                 // Sorting.insertionSort(array);
-                // javaArraySort(array);
-                quickSort(array, 0, array.length-1);
+                 javaArraySort(array);
+                // quickSort(array, 0, array.length-1);
                 long finish = System.nanoTime();
                 long timeElapsed = finish - start;
                 System.out.println("Sorting " + j + "k data strand runtime: " + timeElapsed/1000 + " microseconds");
                 System.out.println("the array is sorted: " + isArraySorted(array));
-                j = j + 2;
+                j = j + 5;
             }
             
 
