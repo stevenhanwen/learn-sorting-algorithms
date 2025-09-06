@@ -4,13 +4,13 @@ This is a performance study of six different sorting algorithms (bubble sort, in
 ### Presentation poster at the virtual symposium.
 <img src="./document/poster.png" alt="drawing" width="700"/>
 
-### Performance comparison between sorting algorithms for partially sorted integers.
+### Performance comparison between sorting algorithms for random integers.
 <img src="./document/random.png" alt="drawing" width="700"/>
 
-### Performance comparison between sorting algorithms for partially sorted integers.
+### Performance comparison between sorting algorithms for increasingly sorted integers.
 <img src="./document/increasingly-sorted.png" alt="drawing" width="700"/>
 
-### Performance comparison between sorting algorithms for partially sorted integers.
+### Performance comparison between sorting algorithms for decreasingly sorted integers.
 <img src="./document/decreasingly-sorted.png" alt="drawing" width="700"/>
 
 ### Performance comparison between sorting algorithms for partially sorted integers.
